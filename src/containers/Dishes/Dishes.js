@@ -18,11 +18,11 @@ class Dishes extends Component {
 
             return (
                     <Card key={id}>
-                        <CardImg top width="100%" src={dish.imageURL} alt={dish.title} />
+                        <CardImg top width="100%" height="40%" src={dish.image} alt={dish.name} />
                         <CardBody className="text-center">
-                            <CardTitle>{dish.title}</CardTitle>
-                            <CardSubtitle style={{color: 'red', fontWeight: 'bold', margin: '10px 0'}}>{dish.cost} KGS</CardSubtitle>
-                            <Button onClick={() => this.props.addDish(id)}>Add to card</Button>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardSubtitle style={{fontSize: '18px', fontWeight: 'bold', margin: '10px 0'}}>{dish.cost} KGS</CardSubtitle>
+                            <Button color="success" onClick={() => this.props.addDish(id)}>В корзину</Button>
                         </CardBody>
                     </Card>
                 );

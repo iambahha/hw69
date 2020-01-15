@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import axiosOrders from "../../axios-orders";
 import './ContactData.css';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
@@ -9,6 +9,8 @@ class ContactData extends Component {
     name: '',
     phone: '',
     address: '',
+    loading: false,
+
   };
 
   valueChanged = event => {
@@ -16,11 +18,18 @@ class ContactData extends Component {
     this.setState({[name]: value});
   };
 
-  orderHandler = event => {
+  orderHandler = async (event) => {
     event.preventDefault();
-    if (this.state.name || this.state.phone || this.state.address) {
-        this.props.submit({userOrder: this.props.userOrder, userContact: this.state});
-    }
+
+    const order = this.props.submit({
+      userOrder: this.props.userOrder,
+      userContact: this.state
+    });
+
+    this.setState({loading: true});
+    await axiosOrders.post('/orders.json', order);
+    this.setState({loading: false});
+    this.props.history.push('/');
 
   };
 
@@ -28,26 +37,26 @@ class ContactData extends Component {
     let form = (
       <Form onSubmit={this.orderHandler}>
           <FormGroup>
-              <Label>Full Name:</Label>
+              <Label>Your Name:</Label>
               <Input className="Input" type="text" name="name" placeholder="Your Name"
                      value={this.state.name} onChange={this.valueChanged}
               />
           </FormGroup>
 
           <FormGroup>
-              <Label>Telephone:</Label>
+              <Label>Phone Number:</Label>
               <Input className="Input" type="text" name="phone" placeholder="Your Phone"
                      value={this.state.phone} onChange={this.valueChanged}
               />
           </FormGroup>
 
           <FormGroup>
-              <Label>Address:</Label>
+              <Label>Your Address:</Label>
               <Input className="Input" type="text" name="address" placeholder="Address"
                      value={this.state.address} onChange={this.valueChanged}
               />
           </FormGroup>
-          <Button color="success" type="submit">Place order !</Button>
+          <Button color="success" type="submit">Подтвердить заказ !</Button>
 
       </Form>
     );

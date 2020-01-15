@@ -1,4 +1,4 @@
-import axios from "../../axios-instance";
+import axiosOrders from "../../axios-orders";
 import {ORDER_FAILURE, ORDER_REQUEST, ORDER_SUCCESS} from "./actionTypes";
 
 export const createOrderRequest = () => {
@@ -16,7 +16,7 @@ export const createOrderFailure = error => {
 export const createOrder = orderData => {
     return dispatch => {
         dispatch(createOrderRequest());
-        axios.post('orders.json', orderData).then(() => {
+        axiosOrders.post('orders.json', orderData).then(() => {
                 dispatch(createOrderSuccess());
             }, error => {dispatch(createOrderFailure(error))}
         );

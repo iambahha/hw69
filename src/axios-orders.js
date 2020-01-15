@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosOrders = axios.create({
-  baseURL: 'https://burger-group-6.firebaseio.com/'
+  baseURL: 'https://my-react-apps-6805c.firebaseio.com/'
 });
 
 export default axiosOrders;

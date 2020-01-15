@@ -1,4 +1,4 @@
-import axios from "../../axios-instance";
+import axiosOrders from "../../axios-orders";
 
 import {ADD_DISH, FETCH_DISHES_FAILURE, FETCH_DISHES_REQUEST, FETCH_DISHES_SUCCESS, REMOVE_DISH} from "./actionTypes";
 
@@ -19,7 +19,7 @@ export const fetchDishes = () => {
     return (dispatch) => {
         dispatch(fetchDishesRequest());
 
-        axios.get('/dishes.json').then(response => {
+        axiosOrders.get('/dishes.json').then(response => {
             dispatch(fetchDishesSuccess(response.data));
         }, error => {
             dispatch(fetchDishesFailure(error));
