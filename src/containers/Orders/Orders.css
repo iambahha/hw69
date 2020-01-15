@@ -1,0 +1,62 @@
+.Orders {
+    width: 100%;
+    box-shadow: 2px 3px 5px 1px rgba(50, 50, 50, 0.75);
+}
+.Orders ol {
+    margin: 0;
+    padding: 0 0 0 18px;
+}
+
+.order {
+    padding: 15px 0;
+    position: relative;
+
+}
+.order p {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    right: 40px;
+}
+.order .qty {
+    color: #00695c;
+    margin-right: 10px;
+}
+.order button {
+    position: absolute;
+    top: 20%;
+    right: -35px;
+    background: url("../../assets/remove.png") 0 0 no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border: none;
+    outline: none;
+}
+
+.total {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid grey;
+}
+
+.orderSummary {
+    border-top: 1px solid orangered;
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+
+.checkout {
+    background-color: #00695c;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    float: right;
+}
+
+h3 {
+    text-align: center;
+    color: red;
+}
